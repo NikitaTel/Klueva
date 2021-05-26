@@ -8,9 +8,9 @@
                         <div class="form-group row">
 
                             <div class="col-md-6">
-                                <input placeholder="Логин" id="login" type="text" class="form-control @error('login') is-invalid @enderror style-input" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
+                                <input placeholder="Наименование организации" id="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror style-input" name="company_name" value="{{ old('company_name') }}" required autocomplete="company_name" autofocus>
 
-                                @error('login')
+                                @error('company_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -19,24 +19,10 @@
                         </div>
 
                         <div class="form-group row">
-
                             <div class="col-md-6">
-                                <input placeholder="Эл. почта" id="email" type="email" class="form-control @error('email') is-invalid @enderror style-input" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input placeholder="Эл. почта" id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror style-input" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-
-                            <div class="col-md-6">
-                                <input placeholder="Имя" id="name" type="text" class="form-control @error('name') is-invalid @enderror style-input" name="name" value="{{ old('name') }}" required autocomplete="name">
-
-                                @error('name')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -46,7 +32,18 @@
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <input placeholder="Город" id="city" type="text" class="form-control @error('city') is-invalid @enderror style-input" name="city" value="{{ old('city') }}" required autocomplete="city">
+                                <input placeholder="Страна" id="country" type="text" class="form-control @error('country') is-invalid @enderror style-input" name="country" value="{{ old('country') }}" required autocomplete="country">
+                                @error('country')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input placeholder="Город" id="text" type="text" class="form-control @error('city') is-invalid @enderror style-input" name="city" value="{{ old('city') }}" required autocomplete="city">
 
                                 @error('city')
                                 <span class="invalid-feedback" role="alert">
@@ -55,7 +52,6 @@
                                 @enderror
                             </div>
                         </div>
-
 
                         <div class="form-group row">
                             <div class="col-md-6">
@@ -71,12 +67,9 @@
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <label for="sender" class="sender-label">Являетесь ли вы отправителем?</label>
+                                <input placeholder="ФИО контактного лица" id="contact_name" type="text" name="contact_name" class="form-control @error('contact_name') is-invalid @enderror style-input" value="{{ old('contact_name') }}" required autocomplete="contact_name">
 
-                                <input name="sender" type="hidden">
-                                <input id="sender" type="checkbox" class="form-control style-input" name="sender">
-
-                                @error('sender')
+                                @error('contact_name')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -95,7 +88,19 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <select name="occupation" id="occupation" class="form-control @error('occupation') is-invalid @enderror style-select">
+                                    <option value="Грузовладелец">Грузовладелец</option>
+                                    <option value="Транспортировщик">Перевозчик (Грузы)</option>
+                                    <option value="Грузовладелец - перевозчик">Грузовладелец - перевозчик</option>
+                                    <option value="Дилеры, услуги, другое">Дилеры, услуги, другое</option>
+                                    <option value="Диспетчер">Диспетчер</option>
+                                    <option value="Перевозчик (пассажиры + грузы)">Перевозчик (пассажиры + грузы)</option>
+                                    <option value="Эспедитор">Эспедитор</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group row">
                                 <input placeholder="Подтвердите пароль" id="password-confirm" type="password" class="form-control style-input" name="password_confirmation" required autocomplete="new-password">
                         </div>

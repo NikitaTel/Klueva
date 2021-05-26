@@ -10979,17 +10979,6 @@ return jQuery;
 
 //Scroll
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-document.querySelector('.pod-wrapper').addEventListener('click', function () {
-  document.querySelector('.marketing-instrument').scrollIntoView();
-}); // prevent
-
-document.querySelector('form').addEventListener('submit', function (e) {
-  e.preventDefault();
-});
-$('.order-file-wrapper > input').change(function () {
-  var value = $(".order-file-wrapper > input").val();
-  $('.order-file-wrapper > span').text(value);
-});
 
 /***/ }),
 
@@ -11011,8 +11000,8 @@ $('.order-file-wrapper > input').change(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/Lidzer/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/Lidzer/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/diploma/klueva/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/diploma/klueva/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

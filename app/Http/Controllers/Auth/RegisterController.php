@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\City;
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Sender;
@@ -52,11 +54,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'login' => ['required', 'string', 'max:20'],
+            'company_name' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:30', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'city' => ['required', 'string'],
-            'name' => ['required', 'string'],
+            'occupation' => ['required', 'string'],
+            'country' => ['required', 'string'],
             'phone_number' => ['required', 'string'],
         ]);
     }
@@ -69,13 +72,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+            $city = new City();
+            $city->name=$data['city'];
+            $city->save();
+
+            $country = new Country();
+            $country->country = $data['country'];
+            $country->save();
+
         return User::create([
-            'login' => $data['login'],
+            'company_name' => $data['company_name'],
             'email' => $data['email'],
+            'country' => $data['country'],
             'city' => $data['city'],
-            'name' => $data['name'],
-            'sender' => $data['sender'],
             'phone_number' => $data['phone_number'],
+            'contact_name' => $data['contact_name'],
+            'occupation' => $data['occupation'],
             'password' => Hash::make($data['password']),
         ]);
 

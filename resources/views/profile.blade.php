@@ -1,29 +1,78 @@
 @extends('layouts.app')
-
+@php
+$user = \Illuminate\Support\Facades\Auth::user();
+@endphp
 @section('content')
-    @if(\Illuminate\Support\Facades\Auth::user()->id_role ==1)
-
+    @if(\Illuminate\Support\Facades\Auth::user()->role_id ==1)
+        @include('admin.user_poisk')
     @else
 
-        <div class="user-profile">
-            <img src="{{asset('images/profile.png')}}" alt="profile" class="user-profile-image">
-            <div class="user-description">
-                <span>Имя пользователя</span>
-                <span>Имя</span>
-                <span>Город</span>
-                <span>Телефон</span>
-
-                <span>{{\Illuminate\Support\Facades\Auth::user()->login}}</span>
-                <span>{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
-                <span>{{\Illuminate\Support\Facades\Auth::user()->city}}</span>
-                <span>+{{\Illuminate\Support\Facades\Auth::user()->phone_number}}</span>
+        @include('profile-main')
+        @if (session('partner_declined'))
+            <div class="alert alert-success green">
+                Партнёрство отклонено
             </div>
-        </div>
-        @if($partners->where('receiver_id', \Illuminate\Support\Facades\Auth::user()->id)->count() != 0)
-            <h1>Все ваши предложения</h1>
-
-            {{}}
         @endif
+        @if (session('archived'))
+            <div class="alert alert-success green">
+                Заявка добавлена в архив
+            </div>
+        @endif
+
+        @if (session('partner_accepted'))
+            <div class="alert alert-success green">
+                Партнёрство принято
+            </div>
+        @endif
+
+        @if (session('unarchived'))
+            <div class="alert alert-success green">
+                Заявка удалена из архива
+            </div>
+        @endif
+
+        @if (session('gruz_success'))
+            <div class="alert alert-success green">
+                Груз добавлен
+            </div>
+        @endif
+
+        @if (session('transport_success'))
+            <div class="alert alert-success green">
+                Транспорт добавлен
+            </div>
+        @endif
+
+        @if (session('document_success'))
+            <div class="alert alert-success green">
+                Документ добавлен
+            </div>
+        @endif
+        <div class="main-lists top-lists">
+        @include('profileForms.gruzs_list')
+        @include('profileForms.transports_list')
+        @include('profileForms.documents_list')
+        </div>
+        <div class="main-lists top-lists">
+        @include('profileForms.partner_requests_list')
+        @include('profileForms.partners_list')
+            <div class="result-pods">
+                @include('profileForms.addDocument')
+            </div>
+
+        </div>
+        <div class="main-lists bottom-lists">
+            @include('profileForms.reviews_list')
+        @include('profileForms.requests_list')
+            @include('profileForms.archive')
+        </div>
+
+
+        @include('profileForms.addGruz')
+
+        @include('profileForms.transport')
+
+        @include('profileForms.addDocument')
+
     @endif
-    </script>
 @endsection
