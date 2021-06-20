@@ -7,7 +7,12 @@
 @section('content')
 
     <div class="user-profile">
-        <img src="{{asset('images/profile.jpg')}}" alt="profile" class="user-profile-image">
+        @if($_GET['id']==1)
+            <img src="{{asset('images/1.jpg')}}" alt="profile" class="user-profile-image">
+        @else
+            <img src="{{asset('images/2.jpg')}}" alt="profile" class="user-profile-image">
+        @endif
+
         <div class="user-description">
             <div>
                 <span class="bold">Название компании</span>: <span>{{$users->find($_GET['id'])->company_name}}</span>
@@ -28,10 +33,20 @@
                 <span class="bold">Профиль деятельности</span>: <span>{{$users->find($_GET['id'])->occupation}}</span>
             </div>
         </div>
+            @if (\Illuminate\Support\Facades\Auth::user()->role_id==1)
+            <div class="form-group row mb-0" style="margin-right: 20%;">
+                <div class="col-md-6 offset-md-4">
+                    <button type="submit" class="btn btn-primary add_gruz_submit">
+                        Редактировать
+                    </button>
+                </div>
+            </div>
+            @endif
         @if($_GET['id']!=\Illuminate\Support\Facades\Auth::user()->id)
             @if(\App\Partner::all()->where('user_id', $_GET['id'])!='[]')
-                <h1>Вы партнёры</h1>
+
             @else
+                @if (\Illuminate\Support\Facades\Auth::user()->role_id==2)
                 <form method="POST" action="{{ route('request_partner') }}" class="partner">
                     @csrf
                     <input type="hidden" value="{{$_GET['id']}}" name="id">
@@ -44,6 +59,7 @@
                         </div>
                     </div>
                 </form>
+                @endif
             @endif
         @endif
     </div>
@@ -63,9 +79,11 @@
 
 
 @php
-    if(\Illuminate\Support\Facades\Auth::user()->role_id==1) {
-    $margin = "margin-left:-100px;";
-}
+    $margin='';
+
+        if(\Illuminate\Support\Facades\Auth::user()->role_id==1) {
+        $margin = "margin-left:-100px;";
+    }
 @endphp
 
     @if(session('review_success'))
@@ -74,7 +92,7 @@
         </div>
     @endif
     <section class="review-wrapper left-margin" style={{$margin}}>
-        @if (!\Illuminate\Support\Facades\Auth::user()->role_id==1)
+        @if (\Illuminate\Support\Facades\Auth::user()->role_id==2)
             <div>
                 <h1>Добавить Отзыв</h1>
                 <form method="POST" action="{{ route('addReview') }}">

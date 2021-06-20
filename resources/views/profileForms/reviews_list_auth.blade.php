@@ -1,6 +1,6 @@
 @php
     $reviews =\App\Review::all()
-        ->where('user_id',$_GET['id']);
+        ->where('user_id',\Illuminate\Support\Facades\Auth::user()->id);
 
 
 @endphp

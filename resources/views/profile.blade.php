@@ -62,7 +62,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
 
         </div>
         <div class="main-lists bottom-lists">
-            @include('profileForms.reviews_list')
+            @include('profileForms.reviews_list_auth')
         @include('profileForms.requests_list')
             @include('profileForms.archive')
         </div>
@@ -71,8 +71,5 @@ $user = \Illuminate\Support\Facades\Auth::user();
         @include('profileForms.addGruz')
 
         @include('profileForms.transport')
-
-        @include('profileForms.addDocument')
-
     @endif
 @endsection

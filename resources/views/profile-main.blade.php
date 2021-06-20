@@ -3,7 +3,12 @@
 @endphp
 
 <div class="user-profile">
-    <img src="{{asset('images/profile.jpg')}}" alt="profile" class="user-profile-image">
+    @if($user->id==1)
+        <img src="{{asset('images/1.jpg')}}" alt="profile" class="user-profile-image">
+    @else
+        <img src="{{asset('images/2.jpg')}}" alt="profile" class="user-profile-image">
+        @endif
+
     <div class="user-description">
         <div>
             <span class="bold">Название компании</span>: <span>{{$user->company_name}}</span>
@@ -24,4 +29,12 @@
             <span class="bold">Профиль деятельности</span>: <span>{{$user->occupation}}</span>
         </div>
     </div>
+
+        <div class="form-group row mb-0" style="margin-right: 20%;">
+            <div class="col-md-6 offset-md-4">
+                <button type="submit" class="btn btn-primary add_gruz_submit">
+                    Редактировать
+                </button>
+            </div>
+        </div>
 </div>

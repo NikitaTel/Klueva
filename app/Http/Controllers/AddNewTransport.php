@@ -29,7 +29,7 @@ class AddNewTransport extends Controller
         $transport_parameter->width=$request->input('width');
         $transport_parameter->height=$request->input('height');
         $transport_parameter->weight=$request->input('weight');
-        $transport_parameter->volume=$request->input('volume');
+        $transport_parameter->volume=$request->input('volume') || 0;
         $transport_parameter->adr=$request->input('adr');
         $transport_parameter->save();
 

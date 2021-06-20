@@ -5,7 +5,7 @@
 @endsection
 @php
 
-$users =\App\User::all();
+$users =\App\User::all()->where('company_name', $_GET['user_company']);
 @endphp
 
 @section('content')

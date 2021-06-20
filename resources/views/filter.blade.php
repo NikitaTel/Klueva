@@ -46,10 +46,10 @@
                             <div>{{$gruz->city_from}}</div>
                             <div>{{$gruz->city_to}}</div>
                             <div>{{$gruz->name}},
-                                {{$gruz_pars->find($gruz->id)->weight}},
-                                {{$gruz_pars->find($gruz->id)->length}},
-                                {{$gruz_pars->find($gruz->id)->width}},
-                                {{$gruz_pars->find($gruz->id)->height}}</div>
+                                {{$gruz_pars->find($gruz->id)->weight}} т,
+                                {{$gruz_pars->find($gruz->id)->length}} м,
+                                {{$gruz_pars->find($gruz->id)->width}} м,
+                                {{$gruz_pars->find($gruz->id)->height}} м</div>
                             <div>{{$gruz->summa}} {{$gruz->currency}}</div>
                             <div>
                                 <a href="{{route('strangersProfile', ['id' => $gruz->user_id])}}">{{\App\User::all()->find($gruz->user_id)->company_name}}</a>

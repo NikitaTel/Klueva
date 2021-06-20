@@ -137,7 +137,7 @@
                         <label for="volume">Объем</label>
                         <input class="add_gruz_input" placeholder="объем(м3)" id="volume" type="text" class="form-control
                             @error('volume') is-invalid @enderror style-input" name="volume"
-                               value="{{ old('volume') }}" required autocomplete="volume" autofocus>
+                               value="{{ old('volume') }}" autocomplete="volume" autofocus>
 
                         @error('volume')
                         <span class="invalid-feedback" role="alert">
@@ -249,7 +249,7 @@
             <div class="col-md-6">
                 <label class="payment-align" for="payment_type">Форма оплаты:</label>
                 <select name="payment_type" id="forma_oplati" class="form-payment_type @error('payment_type') is-invalid @enderror style-select">
-                    <option value="нал.">нал.</option>
+                    <option value="нал.">наличные</option>
                     <option value="безнал.">безнал.</option>
                     <option value="комб.">комб.</option>
                     <option value="эл. платеж">эл. платеж</option>

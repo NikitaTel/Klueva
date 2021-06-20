@@ -11,13 +11,13 @@
         $documents='';
     }
 @endphp
-
+@if (session('document_deleted'))
+    <div class="alert alert-success green">
+        Документ был удалён
+    </div>
+@endif
 <div class="result-pods">
-    @if (session('document_deleted'))
-        <div class="alert alert-success green">
-            Документ был удалён
-        </div>
-    @endif
+
     <h1 class="profile-heading">Документы</h1>
     @if($documents!='[]')
     <ul>

@@ -10,10 +10,14 @@
 
 @section('content')
     <div class="user-profile">
-        <img src="{{asset('images/profile.jpg')}}" alt="profile" class="user-profile-image">
+        @if($gruz->user_id==1)
+            <img src="{{asset('images/1.jpg')}}" alt="profile" class="user-profile-image">
+        @else
+            <img src="{{asset('images/2.jpg')}}" alt="profile" class="user-profile-image">
+        @endif
         <div class="user-description">
             <div>
-                <span class="bold">Название компании</span>: <span>{{\App\User::all()->find($gruz->user_id)->company_name}}</span>
+                <span class="bold">Название компании</span>: <a href="{{route('strangersProfile', ['id' => $gruz->user_id])}}"><span>{{\App\User::all()->find($gruz->user_id)->company_name}}</span></a>
             </div>
             <div>
                 <span class="bold">Контактное имя</span>: <span>{{\App\User::all()->find($gruz->user_id)->contact_name}}</span>

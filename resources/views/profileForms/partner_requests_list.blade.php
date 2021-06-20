@@ -12,7 +12,7 @@
         @foreach($requests ?? '' as $request)
             <li>
                 <a href="{{route('strangersProfile', ['id' => $request->requested_id])}}">
-                    {{\App\User::find($request->requested_id)->contact_name}}
+                    {{\App\User::find($request->requested_id)->company_name}}
                 </a>
                 <div>
                     <form method="POST" action="{{ route('accept_partner') }}">

@@ -11,7 +11,7 @@
         @foreach($partners ?? '' as $partner)
             <li>
                    <a href="{{route('strangersProfile', ['id' => $partner->partner_id])}}">
-                        {{\App\User::all()->find($partner->user_id)->contact_name}}
+                        {{\App\User::all()->find($partner->partner_id)->company_name}}
                     </a>
 
             </li>
